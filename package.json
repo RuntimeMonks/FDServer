@@ -1,0 +1,26 @@
+{
+    "name": "fdserver",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RuntimeMonks/FDServer.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/RuntimeMonks/FDServer/issues"
+    },
+    "homepage": "https://github.com/RuntimeMonks/FDServer#readme",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "mongoose": "^5.7.12",
+        "nodemon": "^1.19.4"
+    }
+}
