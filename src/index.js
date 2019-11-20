@@ -1,15 +1,14 @@
 const express = require('express')
-require('./db/mongoose')
-const cors = require('cors')
-    // const urouter = require('./routers/userRouter')   
+require('./utils/db/mongoose')
+const frouter = require('./routers/feedback')
+var cors = require('cors')
 
-const com = express()
-const portNo = process.env.portNo | 3000
-com.use(cors())
-com.use(express.json())
+const app = express()
+const portNo = 3000
+app.use(express.json())
+app.use(cors())
+app.use(frouter)
 
-// com.use(urouter)
-
-com.listen(portNo, () => {
-    console.log("Listening on port no : " + portNo)
+app.listen(portNo, () => {
+    console.log("Server is ON : " + portNo)
 })
