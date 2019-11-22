@@ -1,21 +1,17 @@
 const mongoose = require('mongoose');
 
-const eventchema = mongoose.Schema
-({
-    eventtype: 
-    {
+const eventchema = mongoose.Schema({
+    eventtype: {
         type: String,
         default: 'Anonymous'
     },
-    name: 
-    {
+    name: {
         type: String,
         required: true,
     },
-    date:
-     {
+    date: {
         type: date,
-        required:true
+        required: true
     }
 });
 

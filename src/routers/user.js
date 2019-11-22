@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../core/user/user')
 const router = new express.Router()
+
 router.post('/signup', async(req, res) => {
     const user = new User(req.body)
 
