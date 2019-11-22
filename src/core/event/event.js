@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const validate = require('validator')
 const eventchema = mongoose.Schema({
     eventtype: {
         type: String,
@@ -10,8 +10,8 @@ const eventchema = mongoose.Schema({
         required: true,
     },
     date: {
-        type: date,
-        required: true
+        type: Date,
+        required: true,
     }
 });
 
