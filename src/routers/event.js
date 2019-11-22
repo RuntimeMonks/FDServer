@@ -4,8 +4,6 @@ const Event = require('../core/event/event')
 
 
 router.post('/event', (req, res) => {
-
-
     const event = new Event(req.body)
     event.save().then(() => {
         console.log(event)
