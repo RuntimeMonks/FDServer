@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
+    role:{
+        type: String,
+        default:"User"
+    },
   
        token:{
            type: String,
@@ -46,10 +50,10 @@ const userSchema = new mongoose.Schema({
 })
 userSchema.methods.generateAuthToken = async function (){
     // const user = this
-    this.token = jwt.sign({ id:user.eid.toString() },'thisismycourse')
+    this.token = jwt.sign({ eid:this.eid.toString() },'thisismycourse')
     console.log(this)
     await this.save()
-    return token
+    return this.token
 }
 
 userSchema.statics.findByCredentials = async (email,password) =>{
