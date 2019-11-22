@@ -18,4 +18,10 @@ router.get('/event', async(req, res) => {
     res.status(200).send(event)
 })
 
+router.get('/event/list', async(req, res) => {
+    var type = req.param('type');
+    const event = await Event.find(type);
+    res.status(200).send(event)
+})
+
 module.exports = router

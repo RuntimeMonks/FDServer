@@ -15,9 +15,12 @@ router.post('/signup', async(req, res) => {
     }
 
 })
-router.post('/login', async(req, res) => {
+router.get('/login', async(req, res) => {
     try {
-        const user = await User.findByCredentials(req.body.email, req.body.password)
+        var email = req.param('email');
+        var password = req.param('password');
+        console.log(email)
+        const user = await User.findByCredentials(email, password)
         const token = await user.generateAuthToken()
         res.send({
             user,
