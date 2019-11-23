@@ -5,7 +5,7 @@ const eventchema = mongoose.Schema({
         type: String,
         default: 'Anonymous'
     },
-    name: {
+    ename: {
         type: String,
         required: true,
     },

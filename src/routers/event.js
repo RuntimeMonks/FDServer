@@ -3,15 +3,25 @@ const router = new express.Router()
 const Event = require('../core/event/event')
 
 
-router.post('/event', (req, res) => {
+router.post('/event', async(req, res) => {
+    console.log("event", req.body)
     const event = new Event(req.body)
-    event.save().then(() => {
-        console.log(event)
+    try {
+        await event.save()
         res.status(201).send(event)
-    }).catch((e) => {
+    } catch (e) {
         res.status(400).send(e)
-    })
+    }
+
+    // event.save().then(() => {
+    //     console.log(event)
+    //     res.status(201).send(event)
+    // }).catch((e) => {
+    //     res.status(400).send(e)
+    // })
 })
+
+
 router.get('/event/:id', (req, res) => {
     const _id = req.params.id // Access the id provided  
     Event.findById(_id).then((ev) => {
@@ -25,9 +35,11 @@ router.get('/event/:id', (req, res) => {
 })
 
 
-router.delete('/event/:id', async(req, res) => {
+router.delete('/event', async(req, res) => {
     try {
-        const ev = await Event.findByIdAndDelete(req.params.id)
+        console.log("in delete event")
+        var id = req.param('id');
+        const ev = await Event.findByIdAndDelete(id)
         if (!ev) {
             return res.status(404).send()
         }
@@ -61,14 +73,8 @@ router.patch('/event/:id', async(req, res) => {
     }
 })
 
-router.get('/event/list', async(req, res) => {
-    var type = req.param('type');
-    const event = await Event.find(type);
-    res.status(200).send(event)
-})
-
-
 router.get('/event', (req, res) => {
+    console.log("in event list")
     Event.find({}).then((events) => {
         res.send(events)
     }).catch((e) => {
