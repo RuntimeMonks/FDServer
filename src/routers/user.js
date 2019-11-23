@@ -6,7 +6,7 @@ router.post('/signup', async(req, res) => {
     const user = new User(req.body)
 
     try {
-
+        user.utype = "user";
         await user.save()
 
         res.status(201).send(user)
@@ -22,7 +22,8 @@ router.get('/login', async(req, res) => {
         console.log(email)
         const user = await User.findByCredentials(email, password)
         const token = await user.generateAuthToken()
-        res.send({ user })
+        console.log("user login: ", user)
+        res.send(user)
     } catch (e) {
         res.status(400).send()
     }
