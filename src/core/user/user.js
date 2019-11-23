@@ -39,6 +39,7 @@ const userSchema = mongoose.Schema({
     },
     utype: {
         type: String,
+        default: "user",
     },
     event: {
         type: Array,

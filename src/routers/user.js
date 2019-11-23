@@ -22,10 +22,7 @@ router.get('/login', async(req, res) => {
         console.log(email)
         const user = await User.findByCredentials(email, password)
         const token = await user.generateAuthToken()
-        res.send({
-            user,
-            token
-        })
+        res.send({ user })
     } catch (e) {
         res.status(400).send()
     }
@@ -47,7 +44,9 @@ router.patch('/update/me', async(req, res) => {
     const validateUpdates = updates.every((updates) => allowedUpdates.includes(updates))
         // console.log(validateUpdates)
     if (!validateUpdates) {
-        return res.status(400).send({ error: 'Invalid Update' })
+        return res.status(400).send({
+            error: 'Invalid Update'
+        })
     }
     try {
         updates.forEach(update => req.users[update] = req.body[update])
