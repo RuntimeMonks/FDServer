@@ -37,6 +37,12 @@ const userSchema = mongoose.Schema({
             }
         }
     },
+    utype: {
+        type: String,
+    },
+    event: {
+        type: Array,
+    },
     token: {
         type: String,
         //    required: true
